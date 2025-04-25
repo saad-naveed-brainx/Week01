@@ -1,0 +1,28 @@
+// ElevatedButton(
+//                 onPressed: _changeColor,
+//                 style: ElevatedButton.styleFrom(
+//                   backgroundColor: Colors.green,
+//                   foregroundColor: Colors.white,
+//                   shape: RoundedRectangleBorder(
+//                     borderRadius: BorderRadius.circular(0),
+//                   ),
+//                   textStyle: const TextStyle(
+//                     fontSize: 20,
+//                     fontWeight: FontWeight.bold,
+//                   ),
+//                 ),
+//                 child: const Text('Change Color'),
+//               ),
+//               const SizedBox(height: 10),
+//               ElevatedButton(
+//                 onPressed: _copyToClipboard,
+//                 style: ElevatedButton.styleFrom(
+//                   backgroundColor: Colors.orange,
+//                   foregroundColor: Colors.white,
+//                   shape: RoundedRectangleBorder(
+//                     borderRadius: BorderRadius.circular(0),
+//                   ),
+//                   textStyle: const TextStyle(fontWeight: FontWeight.bold),
+//                 ),
+//                 child: const Text('Copy to clipboard'),
+//               ),

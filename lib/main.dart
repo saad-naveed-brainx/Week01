@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/services.dart';
+import 'package:day01/widgets/reuseable_button.dart';
+import 'package:day01/core/constants/view_constants.dart';
+import 'package:day01/config/theme/light.dart';
+import 'package:day01/core/constants/app_constants.dart';
 
 void main() {
   runApp(const MainApp());
@@ -30,17 +34,6 @@ class _MainAppState extends State<MainApp> {
     "#2196F3", // Blue (again)
   ];
 
-  void _changeColor() {
-    setState(() {
-      randomColor = colorHexList[random.nextInt(colorHexList.length)];
-      selectedColor = randomColor.replaceFirst("#", "0xFF");
-    });
-  }
-
-  void _copyToClipboard() {
-    Clipboard.setData(ClipboardData(text: selectedColor.toString()));
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -51,38 +44,34 @@ class _MainAppState extends State<MainApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
+              CustomButton(
                 onPressed: _changeColor,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                  textStyle: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                child: const Text('Change Color'),
+                color: LightTheme.green,
+                text: ViewConstants.changeColor,
+                textStyle: TextStyle(fontSize: AppConstants.font24Px),
               ),
-              const SizedBox(height: 10),
-              ElevatedButton(
+              const SizedBox(height: AppConstants.gap16Px),
+              CustomButton(
                 onPressed: _copyToClipboard,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                  textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                child: const Text('Copy to clipboard'),
+                color: LightTheme.orange,
+                text: ViewConstants.copyToClipboard,
+                textStyle: TextStyle(fontSize: AppConstants.font24Px),
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void _changeColor() {
+    setState(() {
+      randomColor = colorHexList[random.nextInt(colorHexList.length)];
+      selectedColor = randomColor.replaceFirst("#", "0xFF");
+    });
+  }
+
+  void _copyToClipboard() {
+    Clipboard.setData(ClipboardData(text: selectedColor.toString()));
   }
 }
